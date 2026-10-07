@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+    int n=0, v[1000];
+    scanf("%d",&n);
+    for(int i=0; i<n; i++) {
+        scanf("%d",&v[i]);
+    }
+
+    // 1. Maximul și numărul de apariții
+    {
+        int max=v[0], count=0;
+        for(int i=0; i<n; i++) {
+            if(v[i]>max) max=v[i];
+        }
+        for(int i=0; i<n; i++) {
+            if(v[i]==max) count++;
+        }
+        printf("Maximul si numarul de aparitii: %d %d\n",max,count);
+    }
+
+    // 2. Biți de 1 și de 0 din reprezentarea binară a maximului
+    {
+        int max=v[0], bit1=0, bit0=0;
+        for(int i=0; i<n; i++) {
+            if(v[i]>max) max=v[i];
+        }
+        while(max) {
+            if(max%2==1) bit1++;
+            else bit0++;
+            max/=2;
+        }
+        printf("Biti de 1 si biti de 0 din Maxim: %d %d\n",bit1,bit0);
+    }
+
+    // 3. Suma elementelor cu suma cifrelor impară
+    {
+        int sum=0;
+        for(int i=0; i<n; i++) {
+            int s=0, modul=abs(v[i]);
+            while(modul>0) {
+                s+=modul%10;
+                modul/=10;
+            }
+            if(s%2==1) sum+=abs(v[i]);
+        }
+        printf("Suma elementelor cu suma cifrelor impara: %d\n",sum);
+    }
+
+    return 0;
+}

@@ -8,7 +8,6 @@ int main(void) {
         scanf("%d",&v[i]);
     }
 
-    // 1. Maximul și numărul de apariții
     {
         int max=v[0], count=0;
         for(int i=0; i<n; i++) {
@@ -20,7 +19,6 @@ int main(void) {
         printf("Maximul si numarul de aparitii: %d %d\n",max,count);
     }
 
-    // 2. Biți de 1 și de 0 din reprezentarea binară a maximului
     {
         int max=v[0], bit1=0, bit0=0;
         for(int i=0; i<n; i++) {
@@ -34,7 +32,6 @@ int main(void) {
         printf("Biti de 1 si biti de 0 din Maxim: %d %d\n",bit1,bit0);
     }
 
-    // 3. Suma elementelor cu suma cifrelor impară
     {
         int sum=0;
         for(int i=0; i<n; i++) {

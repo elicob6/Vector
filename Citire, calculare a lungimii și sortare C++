@@ -1,0 +1,58 @@
+#include <iostream>
+#include <vector>
+#include <cmath>
+
+using namespace std;
+
+class Punct {
+private:
+    double x;
+    double y;
+
+public:
+    Punct(double valX,double valY) {
+        x=valX;
+        y=valY;
+    }
+
+    double calculeazaLungimea() const {
+        return sqrt(x*x+y*y);
+    }
+
+    void afiseaza() const {
+        cout<<x<<" "<<y<<" "<<calculeazaLungimea()<<"\n";
+    }
+
+    bool operator<(const Punct& altPunct) const {
+        return this->calculeazaLungimea()<altPunct.calculeazaLungimea();
+    }
+};
+
+int main() {
+    int n=0;
+    cin>>n;
+
+    vector<Punct> puncte(n,Punct(0,0));
+
+    for(int i=0; i<n; i++) {
+        double x,y;
+        cin>>x>>y;
+        puncte[i]=Punct(x,y);
+    }
+
+    for(int i=0; i<n-1; i++) {
+        for(int j=i+1; j<n; j++) {
+            if(puncte[j]<puncte[i]) {
+                Punct aux=puncte[i];
+                puncte[i]=puncte[j];
+                puncte[j]=aux;
+            }
+        }
+    }
+
+    for(const auto& punctActual : puncte) {
+        punctActual.afiseaza();
+    }
+
+    return 0;
+}
